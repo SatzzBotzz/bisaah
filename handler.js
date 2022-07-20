@@ -38,7 +38,7 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
-        var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
+        var prefix = prefa ? /^[°⬮π÷×¶∆£¢€¥®™+✓_=|~!?@${prefix}$%^&.©^]/gi.test(body) ? body.match(/^[°⬮π÷×¶∆£¢€¥®™+✓_=|~!?@${prefix}$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
@@ -551,306 +551,306 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
 
 case 'mn1': {
 m.reply(` ❏ *Group Menu*
- › #linkgroup
- › #ephemeral [option]
- › #setppgc [image]
- › #setname [text]
- › #setdesc [text]
- › #group [option]
- › #editinfo [option]
- › #add @user
- › #kick @user
- › #hidetag [text]
- › #tagall [text]
- › #antilink [on/off]
- › #mute [on/off]
- › #promote @user
- › #demote @user
- › #vote [text]
- › #devote
- › #upvote
- › #cekvote
- › #hapusvote`)
+ › ${prefix}linkgroup
+ › ${prefix}ephemeral [option]
+ › ${prefix}setppgc [image]
+ › ${prefix}setname [text]
+ › ${prefix}setdesc [text]
+ › ${prefix}group [option]
+ › ${prefix}editinfo [option]
+ › ${prefix}add @user
+ › ${prefix}kick @user
+ › ${prefix}hidetag [text]
+ › ${prefix}tagall [text]
+ › ${prefix}antilink [on/off]
+ › ${prefix}mute [on/off]
+ › ${prefix}promote @user
+ › ${prefix}demote @user
+ › ${prefix}vote [text]
+ › ${prefix}devote
+ › ${prefix}upvote
+ › ${prefix}cekvote
+ › ${prefix}hapusvote`)
 }
 break
 case 'mn2': {
 m.reply(`  ❏ *Main Menu*
- › #ping
- › #owner
- › #menu
- › #help
- › #delete
- › #infochat
- › #quoted
- › #listpc
- › #listgc
- › #listonline
- › #speedtest`)
+ › ${prefix}ping
+ › ${prefix}owner
+ › ${prefix}menu
+ › ${prefix}help
+ › ${prefix}delete
+ › ${prefix}infochat
+ › ${prefix}quoted
+ › ${prefix}listpc
+ › ${prefix}listgc
+ › ${prefix}listonline
+ › ${prefix}speedtest`)
 }
 break
 case 'mn3': {
 m.reply(`  ❏ *Owner Menu*
- › #react [emoji]
- › #chat [option]
- › #join [link]
- › #leave
- › #block @user
- › #unblock @user
- › #bcgroup [text]
- › #bcall [text]
- › #setppbot [image]
- › #setexif
- › #setmenu [option]`)
+ › ${prefix}react [emoji]
+ › ${prefix}chat [option]
+ › ${prefix}join [link]
+ › ${prefix}leave
+ › ${prefix}block @user
+ › ${prefix}unblock @user
+ › ${prefix}bcgroup [text]
+ › ${prefix}bcall [text]
+ › ${prefix}setppbot [image]
+ › ${prefix}setexif
+ › ${prefix}setmenu [option]`)
 }
 break
 case 'mn4': {
 m.reply(`  ❏ *Webzone Menu*
- › #playstore
- › #gsmarena
- › #jadwalbioskop
- › #nowplayingbioskop
- › #aminio
- › #wattpad
- › #webtoons
- › #drakor`)
+ › ${prefix}playstore
+ › ${prefix}gsmarena
+ › ${prefix}jadwalbioskop
+ › ${prefix}nowplayingbioskop
+ › ${prefix}aminio
+ › ${prefix}wattpad
+ › ${prefix}webtoons
+ › ${prefix}drakor`)
 }
 break
 case 'mn5': {
 m.reply(`  ❏ *Downloader Menu*
- › #tiktoknowm [url]
- › #tiktokwm [url]
- › #tiktokmp3 [url]
- › #instagram [url]
- › #twitter [url]
- › #twittermp3 [url]
- › #facebook [url]
- › #pinterestdl [url]
- › #ytmp3 [url]
- › #ytmp4 [url]
- › #getmusic [query]
- › #getvideo [query]
- › #umma [url]
- › #joox [query]
- › #soundcloud [url]`)
+ › ${prefix}tiktoknowm [url]
+ › ${prefix}tiktokwm [url]
+ › ${prefix}tiktokmp3 [url]
+ › ${prefix}instagram [url]
+ › ${prefix}twitter [url]
+ › ${prefix}twittermp3 [url]
+ › ${prefix}facebook [url]
+ › ${prefix}pinterestdl [url]
+ › ${prefix}ytmp3 [url]
+ › ${prefix}ytmp4 [url]
+ › ${prefix}getmusic [query]
+ › ${prefix}getvideo [query]
+ › ${prefix}umma [url]
+ › ${prefix}joox [query]
+ › ${prefix}soundcloud [url]`)
 }
 break
 case 'mn6': {
 m.reply(`  ❏ *Search Menu*
- › #play [query]
- › #yts [query]
- › #google [query]
- › #gimage [query]
- › #pinterest [query]
- › #wallpaper [query]
- › #wikimedia [query]
- › #ytsearch [query]
- › #ringtone [query]
- › #stalk [option] [query]`)
+ › ${prefix}play [query]
+ › ${prefix}yts [query]
+ › ${prefix}google [query]
+ › ${prefix}gimage [query]
+ › ${prefix}pinterest [query]
+ › ${prefix}wallpaper [query]
+ › ${prefix}wikimedia [query]
+ › ${prefix}ytsearch [query]
+ › ${prefix}ringtone [query]
+ › ${prefix}stalk [option] [query]`)
 }
 break
 case 'mn7': {
 m.reply(`  ❏ *Random Menu*
- › #coffe
- › #quotesanime
- › #motivasi
- › #dilanquote
- › #bucinquote
- › #katasenja
- › #puisi
- › #couple
- › #anime
- › #waifu
- › #husbu
- › #neko
- › #shinobu
- › #waifus (nsfw)
- › #nekos (nsfw)
- › #trap (nsfw)
- › #blowjob (nsfw)`)
+ › ${prefix}coffe
+ › ${prefix}quotesanime
+ › ${prefix}motivasi
+ › ${prefix}dilanquote
+ › ${prefix}bucinquote
+ › ${prefix}katasenja
+ › ${prefix}puisi
+ › ${prefix}couple
+ › ${prefix}anime
+ › ${prefix}waifu
+ › ${prefix}husbu
+ › ${prefix}neko
+ › ${prefix}shinobu
+ › ${prefix}waifus (nsfw)
+ › ${prefix}nekos (nsfw)
+ › ${prefix}trap (nsfw)
+ › ${prefix}blowjob (nsfw)`)
 }
 break
 case 'mn8': {
 m.reply(`  ❏ *Text Pro Menu*
- › #3dchristmas
- › #3ddeepsea
- › #americanflag
- › #3dscifi
- › #3drainbow
- › #3dwaterpipe
- › #halloweenskeleton
- › #sketch
- › #bluecircuit
- › #space
- › #metallic
- › #fiction
- › #greenhorror
- › #transformer
- › #berry
- › #thunder
- › #magma
- › #3dcrackedstone
- › #3dneonlight
- › #impressiveglitch
- › #naturalleaves
- › #fireworksparkle
- › #matrix
- › #dropwater
- › #harrypotter
- › #foggywindow
- › #neondevils
- › #christmasholiday
- › #3dgradient
- › #blackpink
- › #gluetext`)
+ › ${prefix}3dchristmas
+ › ${prefix}3ddeepsea
+ › ${prefix}americanflag
+ › ${prefix}3dscifi
+ › ${prefix}3drainbow
+ › ${prefix}3dwaterpipe
+ › ${prefix}halloweenskeleton
+ › ${prefix}sketch
+ › ${prefix}bluecircuit
+ › ${prefix}space
+ › ${prefix}metallic
+ › ${prefix}fiction
+ › ${prefix}greenhorror
+ › ${prefix}transformer
+ › ${prefix}berry
+ › ${prefix}thunder
+ › ${prefix}magma
+ › ${prefix}3dcrackedstone
+ › ${prefix}3dneonlight
+ › ${prefix}impressiveglitch
+ › ${prefix}naturalleaves
+ › ${prefix}fireworksparkle
+ › ${prefix}matrix
+ › ${prefix}dropwater
+ › ${prefix}harrypotter
+ › ${prefix}foggywindow
+ › ${prefix}neondevils
+ › ${prefix}christmasholiday
+ › ${prefix}3dgradient
+ › ${prefix}blackpink
+ › ${prefix}gluetext`)
 }
 break
 case 'mn9': {
 m.reply(`  ❏ *Photo Oxy Menu*
- › #shadow
- › #romantic
- › #smoke
- › #burnpapper
- › #naruto
- › #lovemsg
- › #grassmsg
- › #lovetext
- › #coffecup
- › #butterfly
- › #harrypotter
- › #retrolol`)
+ › ${prefix}shadow
+ › ${prefix}romantic
+ › ${prefix}smoke
+ › ${prefix}burnpapper
+ › ${prefix}naruto
+ › ${prefix}lovemsg
+ › ${prefix}grassmsg
+ › ${prefix}lovetext
+ › ${prefix}coffecup
+ › ${prefix}butterfly
+ › ${prefix}harrypotter
+ › ${prefix}retrolol`)
 }
 break
 case 'mn10': {
 m.reply(`  ❏ *Ephoto Menu*
- › #ffcover
- › #crossfire
- › #galaxy
- › #glass
- › #neon
- › #beach
- › #blackpink
- › #igcertificate
- › #ytcertificate`)
+ › ${prefix}ffcover
+ › ${prefix}crossfire
+ › ${prefix}galaxy
+ › ${prefix}glass
+ › ${prefix}neon
+ › ${prefix}beach
+ › ${prefix}blackpink
+ › ${prefix}igcertificate
+ › ${prefix}ytcertificate`)
 }
 break
 case 'mn11': {
 m.reply(`  ❏ *Fun Menu*
- › #simih
- › #halah
- › #hilih
- › #huluh
- › #heleh
- › #holoh
- › #jadian
- › #jodohku
- › #delttt
- › #tictactoe
- › #family100
- › #tebak [option]
- › #math [mode]
- › #suitpvp [@tag]`)
+ › ${prefix}simih
+ › ${prefix}halah
+ › ${prefix}hilih
+ › ${prefix}huluh
+ › ${prefix}heleh
+ › ${prefix}holoh
+ › ${prefix}jadian
+ › ${prefix}jodohku
+ › ${prefix}delttt
+ › ${prefix}tictactoe
+ › ${prefix}family100
+ › ${prefix}tebak [option]
+ › ${prefix}math [mode]
+ › ${prefix}suitpvp [@tag]`)
 }
 break
 case 'mn12': {
 m.reply(`  ❏ *Primbon Menu*
- › #nomorhoki
- › #artimimpi
- › #artinama
- › #ramaljodoh
- › #ramaljodohbali
- › #suamiistri
- › #ramalcinta
- › #cocoknama
- › #pasangan
- › #jadiannikah
- › #sifatusaha
- › #rezeki
- › #pekerjaan
- › #nasib
- › #penyakit
- › #tarot
- › #fengshui
- › #haribaik
- › #harisangar
- › #harisial
- › #nagahari
- › #arahrezeki
- › #peruntungan
- › #weton
- › #karakter
- › #keberuntungan
- › #memancing
- › #masasubur
- › #zodiak
- › #shio`)
+ › ${prefix}nomorhoki
+ › ${prefix}artimimpi
+ › ${prefix}artinama
+ › ${prefix}ramaljodoh
+ › ${prefix}ramaljodohbali
+ › ${prefix}suamiistri
+ › ${prefix}ramalcinta
+ › ${prefix}cocoknama
+ › ${prefix}pasangan
+ › ${prefix}jadiannikah
+ › ${prefix}sifatusaha
+ › ${prefix}rezeki
+ › ${prefix}pekerjaan
+ › ${prefix}nasib
+ › ${prefix}penyakit
+ › ${prefix}tarot
+ › ${prefix}fengshui
+ › ${prefix}haribaik
+ › ${prefix}harisangar
+ › ${prefix}harisial
+ › ${prefix}nagahari
+ › ${prefix}arahrezeki
+ › ${prefix}peruntungan
+ › ${prefix}weton
+ › ${prefix}karakter
+ › ${prefix}keberuntungan
+ › ${prefix}memancing
+ › ${prefix}masasubur
+ › ${prefix}zodiak
+ › ${prefix}shio`)
 }
 break
 case 'mn13': {
 m.reply(`  ❏ *Convert Menu*
- › #attp
- › #ttp
- › #toimage
- › #removebg
- › #sticker
- › #emojimix
- › #emojimix2
- › #tovideo
- › #togif
- › #tourl
- › #tovn
- › #tomp3
- › #toaudio
- › #ebinary
- › #dbinary
- › #styletext
- › #smeme`)
+ › ${prefix}attp
+ › ${prefix}ttp
+ › ${prefix}toimage
+ › ${prefix}removebg
+ › ${prefix}sticker
+ › ${prefix}emojimix
+ › ${prefix}emojimix2
+ › ${prefix}tovideo
+ › ${prefix}togif
+ › ${prefix}tourl
+ › ${prefix}tovn
+ › ${prefix}tomp3
+ › ${prefix}toaudio
+ › ${prefix}ebinary
+ › ${prefix}dbinary
+ › ${prefix}styletext
+ › ${prefix}smeme`)
 }
 break
 case 'mn14': {
 m.reply(`  ❏ *Database Menu*
- › #setcmd
- › #listcmd
- › #delcmd
- › #lockcmd
- › #addmsg
- › #listmsg
- › #getmsg
- › #delmsg`)
+ › ${prefix}setcmd
+ › ${prefix}listcmd
+ › ${prefix}delcmd
+ › ${prefix}lockcmd
+ › ${prefix}addmsg
+ › ${prefix}listmsg
+ › ${prefix}getmsg
+ › ${prefix}delmsg`)
 }
 break
 case 'mn15': {
 m.reply(`  ❏ *Anonymous Menu*
- › #anonymous
- › #start
- › #next
- › #keluar`)
+ › ${prefix}anonymous
+ › ${prefix}start
+ › ${prefix}next
+ › ${prefix}keluar`)
 }
 break
 case 'mn16': {
 m.reply(`  ❏ *Islamic Menu*
- › #iqra
- › #hadist
- › #alquran
- › #juzamma
- › #tafsirsurah`)
+ › ${prefix}iqra
+ › ${prefix}hadist
+ › ${prefix}alquran
+ › ${prefix}juzamma
+ › ${prefix}tafsirsurah`)
 }
 break
 case 'mn17': {
 m.reply(`  ❏ *Voice Changer*
- › #bass
- › #blown
- › #deep
- › #earrape
- › #fast
- › #fat
- › #nightcore
- › #reverse
- › #robot
- › #slow
- › #tupai`)
+ › ${prefix}bass
+ › ${prefix}blown
+ › ${prefix}deep
+ › ${prefix}earrape
+ › ${prefix}fast
+ › ${prefix}fat
+ › ${prefix}nightcore
+ › ${prefix}reverse
+ › ${prefix}robot
+ › ${prefix}slow
+ › ${prefix}tupai`)
 }
 break
-            case 'chat': {
+            case 'chatedit': {
                 if (!isCreator) throw mess.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
                 if (args[0] === 'mute') {
@@ -1518,6 +1518,54 @@ break
 		m.reply('Sukses Broadcast')
             }
             break
+            case 'tobc':{
+            	if (!isCreator) throw mess.owner
+            	if (/audio/.test(mime)) {
+            	let audio = await quoted.download()
+            let anu = await store.chats.all().map(v => v.id)
+            for (let yoi of anu) {
+                SatganzDevs.sendMessage(yoi, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
+               }
+               m.reply(`Sukses Broadcast`)
+               }
+            if (/image/.test(mime)) {
+            	if (!isCreator) throw mess.owner
+                let media = await quoted.download()
+                let anu = await store.chats.all().map(v => v.id)
+                let btn = [{
+                                urlButton: {
+                                    displayText: 'Source Code',
+                                    url: 's.satganzdevs1.repl.co'
+                                }
+                            }, {
+                                callButton: {
+                                    displayText: 'Number Phone Owner',
+                                    phoneNumber: ' +62 813-1670-1742'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: 'ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: 'owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'List Menu',
+                                    id: 'fiturlist'
+                                }
+                            }]
+                      let txt = `「 Broadcast Bot 」\n\n${text}`
+                for (let yoi of anu) {
+                 SatganzDevs.send5ButImg(yoi, txt, SatganzDevs.user.name, media, btn)
+            } 
+            m.reply(`Sukses Broadcast`)
+            }
+            }
+            break
             case 'infochat': {
                 if (!m.quoted) m.reply('Reply Pesan')
                 let msg = await m.getQuotedObj()
@@ -1884,7 +1932,17 @@ break
             break
             case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
                 m.reply(mess.wait)
-                SatganzDevs.sendMessage(m.chat, { image: { url: api('zenz', '/api/random/'+command, {}, 'apikey') }, caption: 'Generate Random ' + command }, { quoted: m })
+                let buttons = [
+                    {buttonId: `${command}`, buttonText: {displayText: `Next ${command}`}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: `https://zenzapis.xyz/randomanime/${command}?apikey=2c2a76df7d` },
+                    caption: `Generate Random ${command}`,
+                    footer: SatganzDevs.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
 	    case 'couple': {
@@ -1961,10 +2019,10 @@ break
                 SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-	        case 'motivasi': case 'dilanquote': case 'bucinquote': case 'katasenja': case 'puisi': {
+	        case 'motivasi': case 'dilanquote': case 'bucinquote': case 'katasenja': case 'puisi': case 'pantun': {
                 let anu = await fetchJson(api('zenz', '/api/'+command, {}, 'apikey'))
                 let buttons = [
-                    {buttonId: `motivasi`, buttonText: {displayText: 'Next'}, type: 1}
+                    {buttonId: `${command}`, buttonText: {displayText: `Next ${command}`}, type: 1}
                 ]
                 let buttonMessage = {
                     text: anu.result.message,
@@ -3073,273 +3131,277 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
 🗒 ️Prefix : *Multi Prefix*
 ──────────────
  ❏ *Group Menu*
-• #linkgroup
-• #ephemeral [option]
-• #setppgc [image]
-• #setname [text]
-• #setdesc [text]
-• #group [option]
-• #editinfo [option]
-• #add @user
-• #kick @user
-• #hidetag [text]
-• #tagall [text]
-• #antilink [on/off]
-• #mute [on/off]
-• #promote @user
-• #demote @user
-• #vote [text]
-• #devote
-• #upvote
-• #cekvote
-• #hapusvote
+⬮ ${prefix}linkgroup
+⬮ ${prefix}ephemeral [option]
+⬮ ${prefix}setppgc [image]
+⬮ ${prefix}setname [text]
+⬮ ${prefix}setdesc [text]
+⬮ ${prefix}group [option]
+⬮ ${prefix}editinfo [option]
+⬮ ${prefix}add @user
+⬮ ${prefix}kick @user
+⬮ ${prefix}hidetag [text]
+⬮ ${prefix}tagall [text]
+⬮ ${prefix}antilink [on/off]
+⬮ ${prefix}mute [on/off]
+⬮ ${prefix}promote @user
+⬮ ${prefix}demote @user
+⬮ ${prefix}vote [text]
+⬮ ${prefix}devote
+⬮ ${prefix}upvote
+⬮ ${prefix}cekvote
+⬮ ${prefix}hapusvote
  
  ❏ *Main Menu*
-• #ping
-• #owner
-• #menu
-• #help
-• #delete
-• #infochat
-• #quoted
-• #listpc
-• #listgc
-• #listonline
-• #speedtest
+⬮ ${prefix}ping
+⬮ ${prefix}owner
+⬮ ${prefix}menu
+⬮ ${prefix}help
+⬮ ${prefix}delete
+⬮ ${prefix}infochat
+⬮ ${prefix}quoted
+⬮ ${prefix}listpc
+⬮ ${prefix}listgc
+⬮ ${prefix}listonline
+⬮ ${prefix}speedtest
  
  ❏ *Owner Menu*
-• #react [emoji]
-• #chat [option]
-• #join [link]
-• #leave
-• #block @user
-• #unblock @user
-• #bcgroup [text]
-• #bcall [text]
-• #setppbot [image]
-• #setexif
-• #setmenu [option]
+⬮ ${prefix}react [emoji]
+⬮ ${prefix}chat [option]
+⬮ ${prefix}join [link]
+⬮ ${prefix}leave
+⬮ ${prefix}block @user
+⬮ ${prefix}unblock @user
+⬮ ${prefix}bcgroup [text]
+⬮ ${prefix}bcall [text]
+⬮ ${prefix}setppbot [image]
+⬮ ${prefix}setexif
+⬮ ${prefix}setmenu [option]
 
  ❏ *Webzone Menu*
-• #playstore
-• #gsmarena
-• #jadwalbioskop
-• #nowplayingbioskop
-• #aminio
-• #wattpad
-• #webtoons
-• #drakor
+⬮ ${prefix}playstore
+⬮ ${prefix}gsmarena
+⬮ ${prefix}jadwalbioskop
+⬮ ${prefix}nowplayingbioskop
+⬮ ${prefix}aminio
+⬮ ${prefix}wattpad
+⬮ ${prefix}webtoons
+⬮ ${prefix}drakor
 
  ❏ *Downloader Menu*
-• #tiktoknowm [url]
-• #tiktokwm [url]
-• #tiktokmp3 [url]
-• #instagram [url]
-• #twitter [url]
-• #twittermp3 [url]
-• #facebook [url]
-• #pinterestdl [url]
-• #ytmp3 [url]
-• #ytmp4 [url]
-• #getmusic [query]
-• #getvideo [query]
-• #umma [url]
-• #joox [query]
-• #soundcloud [url]
+⬮ ${prefix}tiktoknowm [url]
+⬮ ${prefix}tiktokwm [url]
+⬮ ${prefix}tiktokmp3 [url]
+⬮ ${prefix}instagram [url]
+⬮ ${prefix}twitter [url]
+⬮ ${prefix}twittermp3 [url]
+⬮ ${prefix}facebook [url]
+⬮ ${prefix}pinterestdl [url]
+⬮ ${prefix}ytmp3 [url]
+⬮ ${prefix}ytmp4 [url]
+⬮ ${prefix}getmusic [query]
+⬮ ${prefix}getvideo [query]
+⬮ ${prefix}umma [url]
+⬮ ${prefix}joox [query]
+⬮ ${prefix}soundcloud [url]
 
  ❏ *Search Menu*
-• #play [query]
-• #yts [query]
-• #google [query]
-• #gimage [query]
-• #pinterest [query]
-• #wallpaper [query]
-• #wikimedia [query]
-• #ytsearch [query]
-• #ringtone [query]
-• #stalk [option] [query]
+⬮ ${prefix}play [query]
+⬮ ${prefix}yts [query]
+⬮ ${prefix}google [query]
+⬮ ${prefix}gimage [query]
+⬮ ${prefix}pinterest [query]
+⬮ ${prefix}wallpaper [query]
+⬮ ${prefix}wikimedia [query]
+⬮ ${prefix}ytsearch [query]
+⬮ ${prefix}ringtone [query]
+⬮ ${prefix}stalk [option] [query]
 
  ❏ *Random Menu*
-• #coffe
-• #quotesanime
-• #motivasi
-• #dilanquote
-• #bucinquote
-• #katasenja
-• #puisi
-• #couple
-• #anime
-• #waifu
-• #husbu
-• #neko
-• #shinobu
-• #waifus (nsfw)
-• #nekos (nsfw)
-• #trap (nsfw)
-• #blowjob (nsfw)
-• #nekopoi
-• #wamod
+⬮ ${prefix}coffe
+⬮ ${prefix}quotesanime
+⬮ ${prefix}motivasi
+⬮ ${prefix}dilanquote
+⬮ ${prefix}bucinquote
+⬮ ${prefix}katasenja
+⬮ ${prefix}puisi
+⬮ ${prefix}pantun
+⬮ ${prefix}cerpen
+⬮ ${prefix}cersex
+⬮ ${prefix}couple
+⬮ ${prefix}anime
+⬮ ${prefix}waifu
+⬮ ${prefix}husbu
+⬮ ${prefix}neko
+⬮ ${prefix}shinobu
+⬮ ${prefix}waifus (nsfw)
+⬮ ${prefix}nekos (nsfw)
+⬮ ${prefix}trap (nsfw)
+⬮ ${prefix}blowjob (nsfw)
+⬮ ${prefix}nekopoi
+⬮ ${prefix}wamod
+⬮ ${prefix}chat
 
  ❏ *Text Pro Menu*
-• #3dchristmas
-• #3ddeepsea
-• #americanflag
-• #3dscifi
-• #3drainbow
-• #3dwaterpipe
-• #halloweenskeleton
-• #sketch
-• #bluecircuit
-• #space
-• #metallic
-• #fiction
-• #greenhorror
-• #transformer
-• #berry
-• #thunder
-• #magma
-• #3dcrackedstone
-• #3dneonlight
-• #impressiveglitch
-• #naturalleaves
-• #fireworksparkle
-• #matrix
-• #dropwater
-• #harrypotter
-• #foggywindow
-• #neondevils
-• #christmasholiday
-• #3dgradient
-• #blackpink
-• #gluetext
+⬮ ${prefix}3dchristmas
+⬮ ${prefix}3ddeepsea
+⬮ ${prefix}americanflag
+⬮ ${prefix}3dscifi
+⬮ ${prefix}3drainbow
+⬮ ${prefix}3dwaterpipe
+⬮ ${prefix}halloweenskeleton
+⬮ ${prefix}sketch
+⬮ ${prefix}bluecircuit
+⬮ ${prefix}space
+⬮ ${prefix}metallic
+⬮ ${prefix}fiction
+⬮ ${prefix}greenhorror
+⬮ ${prefix}transformer
+⬮ ${prefix}berry
+⬮ ${prefix}thunder
+⬮ ${prefix}magma
+⬮ ${prefix}3dcrackedstone
+⬮ ${prefix}3dneonlight
+⬮ ${prefix}impressiveglitch
+⬮ ${prefix}naturalleaves
+⬮ ${prefix}fireworksparkle
+⬮ ${prefix}matrix
+⬮ ${prefix}dropwater
+⬮ ${prefix}harrypotter
+⬮ ${prefix}foggywindow
+⬮ ${prefix}neondevils
+⬮ ${prefix}christmasholiday
+⬮ ${prefix}3dgradient
+⬮ ${prefix}blackpink
+⬮ ${prefix}gluetext
 
  ❏ *Photo Oxy Menu*
-• #shadow
-• #romantic
-• #smoke
-• #burnpapper
-• #naruto
-• #lovemsg
-• #grassmsg
-• #lovetext
-• #coffecup
-• #butterfly
-• #harrypotter
-• #retrolol
+⬮ ${prefix}shadow
+⬮ ${prefix}romantic
+⬮ ${prefix}smoke
+⬮ ${prefix}burnpapper
+⬮ ${prefix}naruto
+⬮ ${prefix}lovemsg
+⬮ ${prefix}grassmsg
+⬮ ${prefix}lovetext
+⬮ ${prefix}coffecup
+⬮ ${prefix}butterfly
+⬮ ${prefix}harrypotter
+⬮ ${prefix}retrolol
 
  ❏ *Ephoto Menu*
-• #ffcover
-• #crossfire
-• #galaxy
-• #glass
-• #neon
-• #beach
-• #blackpink
-• #igcertificate
-• #ytcertificate
+⬮ ${prefix}ffcover
+⬮ ${prefix}crossfire
+⬮ ${prefix}galaxy
+⬮ ${prefix}glass
+⬮ ${prefix}neon
+⬮ ${prefix}beach
+⬮ ${prefix}blackpink
+⬮ ${prefix}igcertificate
+⬮ ${prefix}ytcertificate
 
  ❏ *Fun Menu*
-• #simih
-• #halah
-• #hilih
-• #huluh
-• #heleh
-• #holoh
-• #jadian
-• #jodohku
-• #delttt
-• #tictactoe
-• #family100
-• #tebak [option]
-• #math [mode]
-• #suitpvp [@tag]
+⬮ ${prefix}simih
+⬮ ${prefix}halah
+⬮ ${prefix}hilih
+⬮ ${prefix}huluh
+⬮ ${prefix}heleh
+⬮ ${prefix}holoh
+⬮ ${prefix}jadian
+⬮ ${prefix}jodohku
+⬮ ${prefix}delttt
+⬮ ${prefix}tictactoe
+⬮ ${prefix}family100
+⬮ ${prefix}tebak [option]
+⬮ ${prefix}math [mode]
+⬮ ${prefix}suitpvp [@tag]
 
  ❏ *Primbon Menu*
-• #nomorhoki
-• #artimimpi
-• #artinama
-• #ramaljodoh
-• #ramaljodohbali
-• #suamiistri
-• #ramalcinta
-• #cocoknama
-• #pasangan
-• #jadiannikah
-• #sifatusaha
-• #rezeki
-• #pekerjaan
-• #nasib
-• #penyakit
-• #tarot
-• #fengshui
-• #haribaik
-• #harisangar
-• #harisial
-• #nagahari
-• #arahrezeki
-• #peruntungan
-• #weton
-• #karakter
-• #keberuntungan
-• #memancing
-• #masasubur
-• #zodiak
-• #shio
+⬮ ${prefix}nomorhoki
+⬮ ${prefix}artimimpi
+⬮ ${prefix}artinama
+⬮ ${prefix}ramaljodoh
+⬮ ${prefix}ramaljodohbali
+⬮ ${prefix}suamiistri
+⬮ ${prefix}ramalcinta
+⬮ ${prefix}cocoknama
+⬮ ${prefix}pasangan
+⬮ ${prefix}jadiannikah
+⬮ ${prefix}sifatusaha
+⬮ ${prefix}rezeki
+⬮ ${prefix}pekerjaan
+⬮ ${prefix}nasib
+⬮ ${prefix}penyakit
+⬮ ${prefix}tarot
+⬮ ${prefix}fengshui
+⬮ ${prefix}haribaik
+⬮ ${prefix}harisangar
+⬮ ${prefix}harisial
+⬮ ${prefix}nagahari
+⬮ ${prefix}arahrezeki
+⬮ ${prefix}peruntungan
+⬮ ${prefix}weton
+⬮ ${prefix}karakter
+⬮ ${prefix}keberuntungan
+⬮ ${prefix}memancing
+⬮ ${prefix}masasubur
+⬮ ${prefix}zodiak
+⬮ ${prefix}shio
 
  ❏ *Convert Menu*
-• #attp
-• #ttp
-• #toimage
-• #removebg
-• #sticker
-• #emojimix
-• #emojimix2
-• #tovideo
-• #togif
-• #tourl
-• #tovn
-• #tomp3
-• #toaudio
-• #ebinary
-• #dbinary
-• #styletext
-• #smeme
+⬮ ${prefix}attp
+⬮ ${prefix}ttp
+⬮ ${prefix}toimage
+⬮ ${prefix}removebg
+⬮ ${prefix}sticker
+⬮ ${prefix}emojimix
+⬮ ${prefix}emojimix2
+⬮ ${prefix}tovideo
+⬮ ${prefix}togif
+⬮ ${prefix}tourl
+⬮ ${prefix}tovn
+⬮ ${prefix}tomp3
+⬮ ${prefix}toaudio
+⬮ ${prefix}ebinary
+⬮ ${prefix}dbinary
+⬮ ${prefix}styletext
+⬮ ${prefix}smeme
 
  ❏ *Database Menu*
-• #setcmd
-• #listcmd
-• #delcmd
-• #lockcmd
-• #addmsg
-• #listmsg
-• #getmsg
-• #delmsg
+⬮ ${prefix}setcmd
+⬮ ${prefix}listcmd
+⬮ ${prefix}delcmd
+⬮ ${prefix}lockcmd
+⬮ ${prefix}addmsg
+⬮ ${prefix}listmsg
+⬮ ${prefix}getmsg
+⬮ ${prefix}delmsg
 
  ❏ *Anonymous Menu*
-• #anonymous
-• #start
-• #next
-• #keluar
+⬮ ${prefix}anonymous
+⬮ ${prefix}start
+⬮ ${prefix}next
+⬮ ${prefix}keluar
 
  ❏ *Islamic Menu*
-• #iqra
-• #hadist
-• #alquran
-• #juzamma
-• #tafsirsurah
+⬮ ${prefix}iqra
+⬮ ${prefix}hadist
+⬮ ${prefix}alquran
+⬮ ${prefix}juzamma
+⬮ ${prefix}tafsirsurah
 
  ❏ *Voice Changer*
-• #bass
-• #blown
-• #deep
-• #earrape
-• #fast
-• #fat
-• #nightcore
-• #reverse
-• #robot
-• #slow
-• #tupai
+⬮ ${prefix}bass
+⬮ ${prefix}blown
+⬮ ${prefix}deep
+⬮ ${prefix}earrape
+⬮ ${prefix}fast
+⬮ ${prefix}fat
+⬮ ${prefix}nightcore
+⬮ ${prefix}reverse
+⬮ ${prefix}robot
+⬮ ${prefix}slow
+⬮ ${prefix}tupai
 `
                 let btn = [{
                                 urlButton: {
@@ -3379,6 +3441,24 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                         }
                      }
             break
+   
+            	
+            case 'asupan':{
+            	let buttons = [
+                    {buttonId: `asupan`, buttonText: {displayText: 'Next'}, type: 1}
+                ]
+            	let gugu =['https://zenzapis.xyz/randomasupan/asupan?apikey=2c2a76df7d','https://zenzapis.xyz/randomasupan/asupantiktok?apikey=2c2a76df7d','https://zenzapis.xyz/randomasupan/aeunicetjoaa?apikey=2c2a76df7d']
+         let gege = gugu[Math.floor(Math.random() * gugu.length)]
+            	let buttonMessage = {
+                    video: { url: 'https://zenzapis.xyz/randomasupan/asupantiktok?apikey=2c2a76df7d' },
+                    caption: `Janji Ga Prot Prot Prot ☝😅`,
+                    footer: 'Press The Button Below',
+                    buttons: buttons,
+                    headerType: 5
+                }
+                SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
             case 'wamod':{
          let msgs = global.db.data.database.wamod
                 SatganzDevs.copyNForward(m.chat, msgs)
@@ -3389,6 +3469,21 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                 SatganzDevs.copyNForward(m.chat, msgs)
             }
             break
+            case 'mess': case 'c': case 'chat':{
+            	if (!text.includes('|')) return m.reply(`Contoh penggunaan: *.mess @tag >pesan<* atau *${command} >reply pesan target< >pesan<*`)
+const thenumber = q.split("|")[0]+"@s.whatsapp.net"
+const thenumbeer = q.split("|")[0]
+const tamgert = q.split("|")[1]
+SatganzDevs.sendMessage(thenumber, {text:tamgert})
+m.reply(`Success Send ${tamgert} To ${thenumbeer}`)
+} 
+if (!text.includes('@')) {
+	const tamgert = q.split("|")[1]
+	let orang= m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+	SatganzDevs.sendMessage(orang, {text:tamgert})
+m.reply(`Success Send ${tamgert} To ${orang}`)
+}
+break
             case 'hitungmundur': case 'stopwatch': case 'sw':{
             	waktu = args.join(" ")
             m.reply(`Dimulai Dari Sekarang`)
@@ -3397,12 +3492,12 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
             }
             break
 						case 'spam':{
-if (!q) return reply(`Penggunaan spam teks|jumlahspam`)
+if (!q) return m.reply(`Penggunaan spam teks|jumlahspam`)
 var tes1 = q.split('|')[0] ? q.split('|')[0] : q
 var tes2 = q.split('|')[1] ? q.split('|')[1] : ''
-if (!tes2) return reply(`Penggunaan ${command} teks|jumlah`)
-if (Number(tes2) >= 100) return reply('Kebanyakan!')
-if (isNaN(tes2)) return reply(`Harus berupa angka`)
+if (!tes2) return m.reply(`Penggunaan ${command} teks|jumlah`)
+if (Number(tes2) >= 100) return m.reply('Kebanyakan!')
+if (isNaN(tes2)) return m.reply(`Harus berupa angka`)
 for (let i = 0; i < tes2; i++){
 SatganzDevs.sendMessage(m.chat, {text:tes1})
 }
