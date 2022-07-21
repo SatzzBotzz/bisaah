@@ -95,14 +95,14 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
             if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
 	    if (setting) {
 		if (!isNumber(setting.status)) setting.status = 0
-		if (!('autobio' in setting)) setting.autobio = false
+		if (!('autobio' in setting)) setting.autobio = true
 		if (!('templateImage' in setting)) setting.templateImage = true
 		if (!('templateVideo' in setting)) setting.templateVideo = false
 		if (!('templateGif' in setting)) setting.templateGif = false
 		if (!('templateMsg' in setting)) setting.templateMsg = false	
 	    } else global.db.data.settings[botNumber] = {
 		status: 0,
-		autobio: false,
+		autobio: true,
 		templateImage: true,
 		templateVideo: false,
 		templateGif: false,
@@ -141,7 +141,7 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | Runtime : ${runtime(uptime)}`)
+		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | \n\nRuntime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -3473,15 +3473,22 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
             }
             break
             case 'mess': case 'c': case 'chat':{
-            	if (!text.includes('|')) return m.reply(`Contoh penggunaan: *.mess @tag >pesan<* atau *${command} >reply pesan target< >pesan<*`)
-const thenumber = text.split("|")[0]+"@s.whatsapp.net"
-const thenumbeer = q.split("|")[0]
-const tamgert = q.split("|")[1]
-	let orang= m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-	SatganzDevs.sendMessage(orang, {text:tamgert})
-	await sleep(1500)
-m.reply(`Success Send ${tamgert} To ${orang}`)
+            	if (!text) throw m.reply(`Contoh penggunaan: *${command} 6281316701742 >pesan<*`)
+const tamgert = args.join(" ") ? args.join(" ") : m.quoted ? m.quoted.sender : text.replace(/[1234567890]/g, '')
+let orang = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+let fesan = tamgert.replace(/[1234567890]/g, "").replace(/[1234567890]/g, "".toUpperCase())
+pengirim = pushname
+pengimrim =`https://wa.me/${m.sender}`
+let btn = [{
+                                urlButton: {
+                                    displayText: 'Sender',
+                                    url: pengimrim
+                                }
+                                }]
+	kontol = { url : `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text=Message+From+${pengirim}` }
+	SatganzDevs.send5ButImg(orang, fesan, `Message From ${pushname}`, kontol, btn)
 }
+m.reply('Sukses')
 break
             case 'hitungmundur': case 'stopwatch': case 'sw':{
             	waktu = args.join(" ")

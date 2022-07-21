@@ -148,9 +148,31 @@ async function startSatganzDevs() {
                 }
 
                 if (anu.action == 'add') {
+                	let btn = [{
+                                urlButton: {
+                                    displayText: 'Newcomers',
+                                    url: `wa.me/${num.split("@")[0]}`                    
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Welcome!!',
+                                    id: 'k'
+                                }
+                            }]
                     SatganzDevs.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}` })
                 } else if (anu.action == 'remove') {
-                    SatganzDevs.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Leaving To ${metadata.subject}` })
+                	let btn = [{
+                                urlButton: {
+                                    displayText: 'NewLeave',
+                                    url: `wa.me/${num.split("@")[0]}`                    
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Bye Bye!!',
+                                    id: 'k'
+                                }
+                            }]
+                    SatganzDevs.sendMessage(anu.id, { image: { url: ppuser }, contextInfo: { mentionedJid: [num] }, caption: `@${num.split("@")[0]} Leaving From ${metadata.subject}` })
                 }
             }
         } catch (err) {
