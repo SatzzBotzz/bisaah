@@ -560,6 +560,7 @@ m.reply(` ❏ *Group Menu*
  › ${prefix}editinfo [option]
  › ${prefix}add @user
  › ${prefix}kick @user
+  › ${prefix} chat @user
  › ${prefix}hidetag [text]
  › ${prefix}tagall [text]
  › ${prefix}antilink [on/off]
@@ -1524,6 +1525,7 @@ break
             	let audio = await quoted.download()
             let anu = await store.chats.all().map(v => v.id)
             for (let yoi of anu) {
+            	m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
                 SatganzDevs.sendMessage(yoi, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
                }
                m.reply(`Sukses Broadcast`)
@@ -1560,6 +1562,7 @@ break
                             }]
                       let txt = `「 Broadcast Bot 」\n\n${text}`
                 for (let yoi of anu) {
+                	m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
                  SatganzDevs.send5ButImg(yoi, txt, SatganzDevs.user.name, media, btn)
             } 
             m.reply(`Sukses Broadcast`)
@@ -3471,16 +3474,12 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
             break
             case 'mess': case 'c': case 'chat':{
             	if (!text.includes('|')) return m.reply(`Contoh penggunaan: *.mess @tag >pesan<* atau *${command} >reply pesan target< >pesan<*`)
-const thenumber = q.split("|")[0]+"@s.whatsapp.net"
+const thenumber = text.split("|")[0]+"@s.whatsapp.net"
 const thenumbeer = q.split("|")[0]
 const tamgert = q.split("|")[1]
-SatganzDevs.sendMessage(thenumber, {text:tamgert})
-m.reply(`Success Send ${tamgert} To ${thenumbeer}`)
-} 
-if (!text.includes('@')) {
-	const tamgert = q.split("|")[1]
 	let orang= m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 	SatganzDevs.sendMessage(orang, {text:tamgert})
+	await sleep(1500)
 m.reply(`Success Send ${tamgert} To ${orang}`)
 }
 break
@@ -3491,18 +3490,6 @@ break
             m.reply(`${command} Berakhir`)
             }
             break
-						case 'spam':{
-if (!q) return m.reply(`Penggunaan spam teks|jumlahspam`)
-var tes1 = q.split('|')[0] ? q.split('|')[0] : q
-var tes2 = q.split('|')[1] ? q.split('|')[1] : ''
-if (!tes2) return m.reply(`Penggunaan ${command} teks|jumlah`)
-if (Number(tes2) >= 100) return m.reply('Kebanyakan!')
-if (isNaN(tes2)) return m.reply(`Harus berupa angka`)
-for (let i = 0; i < tes2; i++){
-SatganzDevs.sendMessage(m.chat, {text:tes1})
-}
-}
-break
             default:
 const listTag = [`6281316701742@s.whatsapp.net`]
 const partiNum = (m.mtype === 'extendedTextMessage') ? m.message.extendedTextMessage.contextInfo.participant : ''
