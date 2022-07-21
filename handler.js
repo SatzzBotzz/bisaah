@@ -141,7 +141,7 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | \n\nRuntime : ${runtime(uptime)}`)
+		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | Runtime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -1524,8 +1524,8 @@ break
             	if (/audio/.test(mime)) {
             	let audio = await quoted.download()
             let anu = await store.chats.all().map(v => v.id)
+            m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
             for (let yoi of anu) {
-            	m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
                 SatganzDevs.sendMessage(yoi, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
                }
                m.reply(`Sukses Broadcast`)
@@ -3492,9 +3492,9 @@ m.reply('Sukses')
 break
             case 'hitungmundur': case 'stopwatch': case 'sw':{
             	waktu = args.join(" ")
-            m.reply(`Dimulai Dari Sekarang`)
+            m.reply(`*${command}* Dimulai`)
             await sleep(`${waktu}000`)
-            m.reply(`${command} Berakhir`)
+            m.reply(`*${command}* Berakhir`)
             }
             break
             default:
