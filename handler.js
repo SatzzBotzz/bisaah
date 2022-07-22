@@ -53,7 +53,14 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
         const quoted = m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
         const isMedia = /image|video|sticker|audio/.test(mime)
-	
+        
+	     //Thumnail by SatganzDevs
+	let gyu = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36']
+let gy = gyu[Math.floor(Math.random() * gyu.length)]
+let huu = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
+let hu= huu[Math.floor(Math.random() * huu.length)]
+const thumby = fs.readFileSync(`./media/${gy}.jpg`)
+const audiot = fs.readFileSync(`./media/${hu}.mp3`)
         // Group
         const groupMetadata = m.isGroup ? await SatganzDevs.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -1475,7 +1482,7 @@ break
                                 }
                             }]
                       let txt = `「 Broadcast Bot 」\n\n${text}`
-                      SatganzDevs.send5ButImg(i, txt, SatganzDevs.user.name, global.thumb, btn)
+                      SatganzDevs.send5ButImg(i, txt, SatganzDevs.user.name, thumby, btn)
                     }
                 m.reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
             }
@@ -1514,7 +1521,7 @@ break
                                 }
                             }]
                       let txt = `「 Broadcast Bot 」\n\n${text}`
-                      SatganzDevs.send5ButImg(yoi, txt, SatganzDevs.user.name, global.thumb, btn)
+                      SatganzDevs.send5ButImg(yoi, txt, SatganzDevs.user.name, thumby, btn)
 		}
 		m.reply('Sukses Broadcast')
             }
@@ -2930,6 +2937,24 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break
             case 'owner': case 'creator': {
                 SatganzDevs.sendContact(m.chat, global.owner, m)
+                await sleep(100)
+                let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://s.satgandevs1.repl.co'
+                                  }
+                                },{
+                                	urlButton: {
+                                    displayText: 'Github',
+                                    url: 'https://github.com/SatzzBotzz'
+                                    }
+                                    },{
+                                	urlButton: {
+                                    displayText: 'Saweria',
+                                    url: 'https://saweria.co/SatganzDevs'
+                                    }
+                                }]
+	SatganzDevs.send5ButImg(m.chat,`Halo kak ${pushname} - ${salam} itu owner ku, ingin tau lebih banyak?`, `© SatganzDevs`, thumby, btn)
             }
             break
             case 'playstore': {
@@ -3434,7 +3459,7 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        SatganzDevs.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, global.thumb, btn)
+                        SatganzDevs.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, thumby, btn)
                         } else if (setbot.templateGif) {
                         SatganzDevs.send5ButGif(m.chat, anu, `© Created By Satganz Devs`, global.visoka, btn)
                         } else if (setbot.templateVid) {
@@ -3442,6 +3467,8 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                         } else if (setbot.templateMsg) {
                         SatganzDevs.send5ButMsg(m.chat, anu, `© Created By Satganz Dev`, btn)
                         }
+                        await sleep(200)
+                        SatganzDevs.sendMessage(m.chat, {audio: audiot, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
                      }
             break
    
