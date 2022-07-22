@@ -148,7 +148,7 @@ const audiot = fs.readFileSync(`./media/${hu}.mp3`)
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | Runtime : ${runtime(uptime)}`)
+		await SatganzDevs.setStatus(`${SatganzDevs.user.name} | Runtime : ${runtime}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -1546,34 +1546,26 @@ break
                                     displayText: 'Source Code',
                                     url: 's.satganzdevs1.repl.co'
                                 }
-                            }, {
-                                callButton: {
-                                    displayText: 'Number Phone Owner',
-                                    phoneNumber: ' +62 813-1670-1742'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Status Bot',
-                                    id: 'ping'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Contact Owner',
-                                    id: 'owner'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'List Menu',
-                                    id: 'fiturlist'
-                                }
                             }]
-                      let txt = `「 Broadcast Bot 」\n\n${text}`
+                      let txt = `${text}`
+                      m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
                 for (let yoi of anu) {
-                	m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
                  SatganzDevs.send5ButImg(yoi, txt, SatganzDevs.user.name, media, btn)
             } 
             m.reply(`Sukses Broadcast`)
             }
+            }
+            break
+            case 'koce':{
+            	if (!isCreator) throw mess.owner
+                let anu = await store.chats.all().map(v => v.id)
+            	let orang = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')
+            let list =[orang]
+            m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
+            for (let yoi of anu) {
+	    SatganzDevs.sendContact(yoi, list, m)
+            }
+            m.reply(`Sukses Broadcast`)
             }
             break
             case 'infochat': {
@@ -3499,21 +3491,26 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
                 SatganzDevs.copyNForward(m.chat, msgs)
             }
             break
-            case 'mess': case 'c': case 'chat':{
-            	if (!text) throw m.reply(`Contoh penggunaan: *${command} 6281316701742 >pesan<*`)
-const tamgert = args.join(" ") ? args.join(" ") : m.quoted ? m.quoted.sender : text.replace(/[1234567890]/g, '')
-let orang = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-let fesan = tamgert.replace(/[1234567890]/g, "").replace(/[1234567890]/g, "".toUpperCase())
-pengirim = pushname
-pengimrim =`https://wa.me/${m.sender}`
-let btn = [{
-                                urlButton: {
-                                    displayText: 'Sender',
-                                    url: pengimrim
-                                }
-                                }]
-	kontol = { url : `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text=Message+From+${pengirim}` }
-	SatganzDevs.send5ButImg(orang, fesan, `Message From ${pushname}`, kontol, btn)
+            case 'mess': case 'c': case 'chat': case 'kirim':{
+            	if (!text) throw m.reply(`Contoh penggunaan: ${command} *>nama pengirim<*|6281316701742|*>pesan<*`)
+let bekk = m.sender
+let pk = pushname
+let bebek = bekk.replace(/[@s.whatsapnet]/g, "").replace(/[@S.WHATSAPNET]/g, "")
+let frome = text.split("|")[0]
+let orang = text.split("|")[1]
+let pesann = text.split("|")[2]
+let butt =[{ buttonId: `markread ${pushname}|${bebek}|Selamat \n${pk}/${orang} Telah Membaca Pesanmu!!`, buttonText: { displayText: 'Tandai Telah Di Baca' }, type: 1 }]
+m.reply(`Mengirim Pesan : ${pesann} Ke : ${orang} Dari : ${frome}`)
+	await SatganzDevs.sendButtonText(`${orang}@s.whatsapp.net`, butt, pesann,`Message From : ${frome}`, m)
+}
+m.reply('Sukses')
+break
+case 'markread':{
+	let frome = text.split("|")[0]
+let orang = text.split("|")[1]
+let pesann = text.split("|")[2]
+let butt =[{ buttonId: 'u', buttonText: { displayText: 'Alhamdulillah' }, type: 1 }]
+	await SatganzDevs.sendButtonText(`${orang}@s.whatsapp.net`, butt, pesann,`Message From : ${frome}`, m)
 }
 m.reply('Sukses')
 break
@@ -3522,6 +3519,12 @@ break
             m.reply(`*${command}* Dimulai`)
             await sleep(`${waktu}000`)
             m.reply(`*${command}* Berakhir`)
+            }
+            break
+            case 'kontak':{
+            	let orang = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')
+            let list =[orang]
+	    SatganzDevs.sendContact(m.chat, list, m)
             }
             break
             default:
@@ -3540,7 +3543,7 @@ const partiNum = (m.mtype === 'extendedTextMessage') ? m.message.extendedTextMes
                 }
                 SatganzDevs.sendMessage(m.chat, reactionMessage)
                 await sleep(100)
-                SatganzDevs.sendImageAsSticker(m.chat, tagn, m, { packname: `Jangan Tag Gwejh`, author: `SatganzDevs` })
+                SatganzDevs.sendImageAsSticker(m.chat, tagn, m, { packname: `Jangan Tag Owner Gwejh`, author: `SatganzDevs` })
             }  
             if (budy.includes(`6281316701742`))  {
             let tagn = fs.readFileSync(`./antag.png`)
