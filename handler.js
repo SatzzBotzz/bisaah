@@ -478,14 +478,14 @@ Selama ${clockString(new Date - user.afkTime)}
 	    
         switch(command) {
         	case 'req': case 'request':{
-        	g = '6281316701742'
-        SatganzDevs.sendText(m.chat, `New Request : ${q}\n\nRequest From : ${m.sender}`, m)
+        	g = `6281316701742@s.whatsapp.net`
+        SatganzDevs.sendText(g, `New Request : ${q}\n\nRequest From : ${m.sender}`, m)
         m.reply('Thank you for making a request')
         }
         break
         case 'report': case 'lapor':{
-        g = '6281316701742'
-        SatganzDevs.sendText(m.chat, `New Report : ${q}\n\nReport From : ${m.sender}`, m)
+        g = `6281316701742@s.whatsapp.net`
+        SatganzDevs.sendText(g, `New Report : ${q}\n\nReport From : ${m.sender}`, m)
         m.reply('Reports sent, if playing games will not be responded to, you will be blocked by bots.')
         }
         break
