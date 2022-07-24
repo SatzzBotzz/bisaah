@@ -1,7 +1,7 @@
 /**
-   * Create By Dika Ardnt.
-   * Contact Me on wa.me/6288292024190
-   * Follow https://github.com/DikaArdnt
+   * Base By Dika Ardnt.
+   * Recode full by Satganz Devs
+   * Follow https://github.com/SatzzBotzz
 */
 
 require('./settings/config')
@@ -45,6 +45,7 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
         const pushname = m.pushName || "No Name"
         const time = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss z')
         const salam = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
+        const ucapan = 'Selamat ' +  moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
         const tanggal = moment.tz('Asia/Jakarta').format('dddd') + ', ' + moment.tz('Asia/Jakarta').format('LL')
         const botNumber = await SatganzDevs.decodeJid(SatganzDevs.user.id)
         const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
@@ -55,12 +56,11 @@ module.exports = SatganzDevs = async (SatganzDevs, m, chatUpdate, store) => {
         const isMedia = /image|video|sticker|audio/.test(mime)
         
 	     //Thumnail by SatganzDevs
-	let gyu = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36']
-let gy = gyu[Math.floor(Math.random() * gyu.length)]
-let huu = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
-let hu= huu[Math.floor(Math.random() * huu.length)]
-const thumby = fs.readFileSync(`./media/${gy}.jpg`)
-const audiot = fs.readFileSync(`./media/${hu}.mp3`)
+let gambr = global.gambar[Math.floor(Math.random() * global.gambar.length)]
+let audi = global.audio[Math.floor(Math.random() * global.audio.length)]
+const ppkul = { url : gambr }
+const thumby = { url : "https://telegra.ph/file/810bd6a113ac5df28c502.jpg" }
+const audiot = { url : audi }
         // Group
         const groupMetadata = m.isGroup ? await SatganzDevs.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
@@ -119,23 +119,23 @@ const audiot = fs.readFileSync(`./media/${hu}.mp3`)
         } catch (err) {
             console.error(err)
         }
-	    
-        // Public & Self
-        if (!SatganzDevs.public) {
-            if (!m.key.fromMe) return
-        }
-        
-        if (isCmd) {
-        	g =['❤','🧡','💛','💚','💙','💜','🖤','🤍','🤎','❣️','💕','💞','💓','💗','💖','💘','💝','♨️','✴️','😇','☺','🙂','😉','🤣','💮','😍','😜','🤑','☢️']
-        p = g[Math.floor(Math.random() * g.length)]
-            	reactionMessage = {
+	          if (isCmd) {
+let g7=["🥶","😎","🤩","🤗","😀","😃","😆","😁","😄"]
+let p = g7[Math.floor(Math.random() * g7.length)]
+reactionMessage = {
                     react: {
                         text: p,
                         key: { remoteJid: m.chat, fromMe: false, id: quoted.id }
                     }
                 }
                 SatganzDevs.sendMessage(m.chat, reactionMessage)
-                }
+            }
+        // Public & Self
+        if (!SatganzDevs.public) {
+            if (!m.key.fromMe) return
+        }
+                
+                
         // Push Message To Console && Auto Read
         if (m.message) {
             SatganzDevs.sendReadReceipt(m.chat, m.sender, [m.key.id])
@@ -197,7 +197,7 @@ const audiot = fs.readFileSync(`./media/${hu}.mp3`)
       if (db.data.chats[m.chat].mute && !isAdmins && !isCreator) {
       return
       }
-
+                
         // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
         let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
@@ -1991,7 +1991,7 @@ break
                 SatganzDevs.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
             }
             break
-            case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
+            case 'anime': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
                 m.reply(mess.wait)
                 let buttons = [
                     {buttonId: `${command}`, buttonText: {displayText: `Next ${command}`}, type: 1}
@@ -2428,15 +2428,15 @@ break
             }
             break
 	        case 'tiktok': case 'tiktoknowm': {
-                if (!text) throw 'Masukkan Query Link!'
-                m.reply(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/tiktok', { url: text }, 'apikey'))
-                let buttons = [
-                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
+                if (!text) throw 'Input URL' 
+	if (!/(?:https:?\/{2})?(?:w{3}|vm|vt|t)?\.?tiktok.com\/([^\s&]+)/gi.test(text)) throw 'Invalid URL'
+	let anu = await fetchJson(`https://api2.musical.ly/aweme/v1/aweme/detail/?aweme_id=${q}`)
+	 let buttons = [
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.result.nowatermark },
+                    video: { url: anu.result },
                     caption: `Download From ${text}`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -2444,6 +2444,7 @@ break
                 }
                 SatganzDevs.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
+            break
             break
             case 'tiktokwm': case 'tiktokwatermark': {
                 if (!text) throw 'Masukkan Query Link!'
@@ -3517,6 +3518,11 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
 ├ ${prefix}slow
 ├ ${prefix}tupai
 ╰❒
+
+╭─❒ 「 New Menu 」
+├ ${prefix}ppkul
+├ ${prefix}waifu
+╰❒
 `
                 let btn = [{
                                 urlButton: {
@@ -3560,15 +3566,14 @@ Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot
             break
    
             	
-            case 'asupan':{
+            case 'waifu':{
             	let buttons = [
-                    {buttonId: `asupan`, buttonText: {displayText: 'Next'}, type: 1}
+                    {buttonId: `waifu`, buttonText: {displayText: 'Next'}, type: 1}
                 ]
-            	let gugu =['https://zenzapis.xyz/randomasupan/asupan?apikey=2c2a76df7d','https://zenzapis.xyz/randomasupan/asupantiktok?apikey=2c2a76df7d','https://zenzapis.xyz/randomasupan/aeunicetjoaa?apikey=2c2a76df7d']
-         let gege = gugu[Math.floor(Math.random() * gugu.length)]
+         let randvid = global.waifu[Math.floor(Math.random() * global.waifu.length)]
             	let buttonMessage = {
-                    video: { url: 'https://zenzapis.xyz/randomasupan/asupantiktok?apikey=2c2a76df7d' },
-                    caption: `Janji Ga Prot Prot Prot ☝😅`,
+                    video: { url: randvid },
+                    caption: `By Satganz Devs`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
                     headerType: 5
@@ -3621,8 +3626,10 @@ if (!text) throw m.reply(`Examples of use : ${command} *>Message<*|>Destination 
 let spar = text.split("|")[0]
 let terern = text.split("|")[1]
 let jumpeh = text.split("|")[2]
-var satgnz = global.owner
-if (!satgnz.includes(text)) throw m.reply(`You Can't Spam My Owner`)
+var satgnz = "6281316701742"
+let isLinkThisGc = new RegExp(satgnz, 'i')
+let isgclink = isLinkThisGc.test(m.text)
+ if (isgclink) return m.reply(`You Can't Spam My Owner`)
 if (!jumpeh) throw m.reply(`Examples of use : ${command} *>Message<*|>Destination number<|*>Amount<*`)
 if (Number(jumpeh) >= 100) throw m.reply('Most!')
 if (isNaN(jumpeh)) throw m.reply(`Must be a number `)
@@ -3631,8 +3638,11 @@ SatganzDevs.sendMessage(`${terern}@s.whatsapp.net`, {text:spar})
 }
 }
 break
-case 'halo':{
-	m.reply(salam)
+case 'carbon':{
+	if (!text) throw m.reply('Input text')
+	let res = await fetch(`https://api-rull.herokuapp.com/api/cmd?code=${q}`)
+	if (res.status !== 200) throw m.reply(`To long!`)
+	SatganzDevs.sendMessage(m.chat, { image: { url: res.url }}, { quoted: m })
 	}
 	break
             default:
